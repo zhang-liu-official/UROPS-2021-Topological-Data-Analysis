@@ -1,0 +1,170 @@
+% Preamble
+\documentclass[11pt,reqno,oneside,a4paper]{article}
+\usepackage[a4paper,includeheadfoot,left=25mm,right=25mm,top=00mm,bottom=20mm,headheight=20mm]{geometry}
+\input{../texhead-main} % Standard packages, page layout, theorem environments, macros, etc
+\input{../texhead-project} % Macros specific to this project.
+\usepackage{bbm}
+\DeclareMathOperator{\Cech}{\check{C}}
+\author{Zhang Liu}
+\title{Notes on Topological Data Analysis}
+\renewcommand{\runningtitle}{Notes on Topological Data Analysis}
+\date{\today}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\begin{abstract}
+    This document is to serve as a set of notes to fill the gaps in my understanding of Topological Data Analysis relevant to the project. The reference book for this set of notes is \textit{Algebraic Topology} \cite{Hat2002a}, \textit{Topology and Data} \cite{Car2009a}, and \textit{Topology for Computing} \cite{Zom2005a}.
+\end{abstract}
+
+% \tableofcontents
+
+\section{Motivation}
+
+First of all, there are four major advantages for using topological methods to deal with point clouds in data analysis.  
+
+\begin{enumerate}
+	\item Topology provides qualitative information which is required for data analysis.
+	
+	\item Metrics are not theoretically justified. Compared to straightforward geometric methods, Topology is less sensitive to the actual choice of metrics. 
+	
+	\item Studying geometric objects using Topology does not depend on the coordinates. 
+	
+	\item Functoriality. 
+	
+	\begin{defn}
+		For any topological space X, abelian group $A$, and integer $k\geq 0,$ there is assigned a group $H_k(X,A).$
+		
+		For any $A$ and $k$, and any continuous map $f: X \to Y,$ there is an induced homomorphism $H_k(f,A): H_k(X,A) \to H_k(Y,A).$ Then \textit{functoriality} refers to the following conditions:
+		
+		\begin{itemize}
+			\item  $H_k(f\circ g,A): H_k(f,A) \circ H_k(g,A)$
+			\item  $H_k(Id_{X};A) = Id_{H_k(X,A)}.$
+		\end{itemize}
+	\end{defn}
+
+	Functoriality addresses the ambiguities in statistical clustering methods - in particular the arbitrariness of various threshhold choices. We now illustrate how exactly functoriality could be used in questions related to clustering. 
+	
+	Let $X$ be the full data set and $X_1,X_2$ are the subsamples from the data set. If the set of clusterings $C(X_1), C(X_2), C(X_1 \cup X_2)$ correspond well (this notion will be defined formally in later section), then we can conclude that the subsample clusterings correspond to clusterings in the full data set $X$. 
+\end{enumerate}
+
+\section{Homotopy} \label{sec:homotopy}
+
+\begin{defn}
+	\textit{Homotopy} is a family of maps $f_t: X \to Y$ where $t \in I$ such that $F: X\times I \to Y$ defined by $F(x,t) \mapsto f_t(x)$ is continuous.
+\end{defn}
+
+\begin{defn}
+	Two maps $f_0, f_1$ are \textit{homotopic} if $\exists$ a homotopy $f_t$ between $f_0$ and $f_1$.  
+\end{defn}
+
+A special case of homotopy is the deformation retraction. 
+
+\begin{defn}
+	A \textit{deformation retraction} of $X$ onto a subspcae $A$ is a homotopy from the identity map of $X$ to a retraction of $X$ onto $A$, $r: X\to X$ such that $r(X) = A$ and $r|_A = \mathbbm{1}$ (or equivalently, retraction is the map $r: X\to X, r^2 =r$). 
+\end{defn}
+
+Retraction is the topological analog of projection. To visualize this analogy, we give an example of how some deformation retractions arise from the mapping cylinder.
+
+\begin{defn}
+	For a map $f: X\to Y$, the \textit{mapping cylinder} $M_f$ is the quotient space of the disjoint union $(X \times I) \sqcup Y$.
+\end{defn}
+
+\begin{defn}
+A map $f:X \to Y$ is a homotopy equivalence if there is a map $g: Y \to X$ such that 
+\begin{itemize}
+	\item $f\circ g$ is homotopic to the identity map on $Y$, and
+	\item $g\circ f$ is homotopic to $f$.
+\end{itemize}
+
+Two spaces $X,Y$ are\textit{ homotopy equivalent} if there exiss a homotopy equivalence $f: X \to Y. $
+\end{defn}
+
+\begin{defn}
+	If $f$ and $g$ are homotopic, then $H_k(f,A) = H_k(g,A).$ Then it follows that if $X$ and $Y$ are homotopy equivalent, then $H_k(X,A) \cong H_k(Y,A) $.
+\end{defn}
+
+\begin{defn}
+	For any field $F$, $H_k(X,F)$ will be a vector space over $F$. Then if $F$ is finite dimensional, its dimension is referred to as the $k$-th Betti number with coefficients in $F$, denoted as $\beta_{k}(X,F).$
+	
+	The $k$-th Betti number corresponds to an informal notion of the number of independent $k$-dimensional surfaces. If two spaces are homotopy equivalent, then all their Betti numbers are equal. 
+	
+	Note that the Betti numbers can vary with the choice of the coefficients in $F$. 
+\end{defn}
+
+
+\begin{defn}
+	An \textit{abstract simplicial complex} is a pair $(V, \Sigma)$, where $V$ is a finite set, and $\Sigma$ is a family of non-empty subsets of $V$ such that 
+	$$\sigma \in \Sigma, \tau \subseteq \sigma \implies \tau \in \Sigma.$$
+	
+	Associated to a simplicial complex is a topological space $|(V,\Sigma)|$. $|(V,\Sigma)|$ may be defined using a bijection $\phi : V \to \{1, 2, \dots,N\}$ as the subspace of $\mathbb{R}^N$ given by the union 
+	$$\cup_{\sigma \in \Sigma} c(\sigma),$$
+	where $c(\sigma)$ is the convex hull of the set $\{e_{\phi(s)}\}_{s\in \sigma}$, where $e_i$ denotes the $i$th standard basis vector.
+\end{defn}
+
+	 We often use abstract simplicial complexes to approximate topological spaces. For simplicial complexes the homology can be computed using only the linear algebra of finitely generated $\mathbb{Z}$-modules. In particular, for simplicial complexes, homology is algorithmically computable (unlike the standard methods for computing the Smith normal form).
+
+\begin{defn}
+	Let $X$ be a topological space, and let $\mathcal{U} = \{U_\alpha\}_{\alpha\in A}$ be any covering of $X$. 
+	
+	The \textit{nerve} of $\mathcal{U}$, denoted by $N\mathcal{U}$, will be the abstract simplicial complex with vertex set $A$, and where a family $\{\alpha_0, \dots, \alpha_k\}$ spans a $k$-simplex if and only if $U_{\alpha_0}\cap U_{\alpha_1} \cap \cdots \cap U_{\alpha_k} \neq \emptyset.$
+\end{defn}
+
+One reason that this construction is very useful is the following ``Nerve Theorem." This theorem gives the criteria for $N(\mathcal{U})$ to be homotopy equivalent to the underlying topological space $X$.
+
+\begin{thm}
+Suppose that $X$ and $U$ are as above, and suppose that the covering consists of open sets and is numerable. Suppose further that for all $\emptyset \subseteq A,$ we have that $\bigcap_{s\in S} U_s$ is either contractible or empty. Then $N(\mathcal{U})$ is homotopy equivalent to $X$.
+\end{thm}
+
+\begin{defn}
+	For any subset $V\subseteq X$ for which $X = \bigcup_{v\in V}B_\epsilon(v)$, one can construct the nerve of the covering $\{B_\epsilon(v)\}_{v\in V}$. This construction is referred to as the ``\v{C}ech complex" attached to V and is denoted as $\Cech(V,\epsilon)$.
+\end{defn}
+
+\begin{thm}
+Let $M$ be a compact Riemannian manifold. Then there is a positive number $e$ so that $\Cech(M, \epsilon)$ is homotopy equivalent to $M$ whenever $\epsilon \leq e$. Moreover, for every $ \epsilon \leq e$, there is a finite subset $V \subseteq M$ so that the subcomplex of $\Cech(V,\epsilon) \subseteq \Cech(M, \epsilon)$ is also homotopy equivalent to $M$.
+\end{thm}
+
+However, this construction is computationally expensive. A solution is to construct a simplicial complex which can be recovered solely from the edge information, which motivates the following construction known as the ``Vietoris-Rips complex." 
+
+\begin{defn}
+	Let $X$ be a metric space with metric $d$. Then the  \textit{Vietoris-Rips complex} for $X$, attached to the parameter $\epsilon$, denoted by $VR(X,\epsilon)$, will be the simplicial complex whose vertex set is $X$, and where $\{x_0,\dots, x_k\}$ spans a $k$-simplex if and only if $d(x_i,x_j) \leq \epsilon$ for all $0\leq i,j\leq k.$
+\end{defn}
+
+\begin{prop}
+	Comparing the \v{C}ech complex and the VR compelx:
+	$$ \Cech(X,\epsilon) \subseteq VR (X,2\epsilon) \subseteq \Cech(X,2\epsilon).$$
+\end{prop}
+
+However, even the VR complex is computationally expensive. A solution, again, is to the Voronoi decomposition which studies the subspaces of Euclidean space. 
+
+\begin{thm}
+	Let $X$ be any metric space, and let $\mathcal{L}\subseteq X$ be a subset (called the set of \textit{landmark points}). Given $\lambda \in \mathcal{L}$, we define the \textit{Voronoi cell} associated to $\lambda, V_\lambda$, by
+	$$V_\lambda = \{x\in X| d(x,\lambda) \leq d(x,\lambda^\prime)\} \forall \lambda^\prime \in \mathcal{L}.$$
+\end{thm}
+
+
+\begin{defn}
+	Similar to how we define the \v{C}ech complex above, we define the Delaunay complex attached to $\mathcal{L}$ to be the nerve of this covering.
+\end{defn}
+
+However, for finite metric spaces, the Delaunay complex generically produces degenerate (i.e. discrete) complexes with no $1$-simplices. To solve this, we modify the definition to accommodate pairs of points which are ``almost" equidistant from a pair of landmark points. We thus have the definition below: 
+\begin{defn}
+	Let X be any metric space, and suppose we are given a finite set $\mathcal{L}$ of points in $X$ (called the landmark set), and a parameter $\epsilon> 0$. For every point $x \in X$, we let $m_x$ denote the distance from this point to the set $\mathcal{L}$, i.e., the minimum distance from $x$ to any point in the landmark set.
+	
+	Then we define the\textit{strong witness complex} attached to this data to be the complex $W^s(X,\mathcal{L}, \epsilon)$ whose vertex set is $\mathcal{L}$, and where a collection $\{l_0, \dots, l_k\}$ spans a $k$-simplex if and only if there is a point $x \in X$ (the witness) so that $d(x, l_i)\leq m_x + \epsilon$ for all $i$. 
+	
+	We can also consider the version of this complex in which the $1$-simplices are identical to those of $W(X,\mathcal{L},\epsilon)$, but where the family $\{l_0, \dots, l_k\}$ spans a $k$-simplex if and only if all the pairs $(l_i, l_j)$ are $1$-simplices. We will denote this by $W^s_VR$.
+\end{defn}
+
+A modified version of the strong witness complex is also useful:
+
+\begin{defn}
+	We construct the\textit{weak witness complex}, $W^w(X,\mathcal{L}, \epsilon)$, attached to the given data by declaring that a family $\Lambda = \{l_0, \dots, l_k\}$ spans a $k$-simplex if and only if $\Lambda$ and all its faces admit $\epsilon$ weak witnesses. 
+	
+	Similar to the definition for strong witness complex, we can also consider the version of the weak witness complex in which the $1$-simplices are identical to those of $W(X,\mathcal{L},\epsilon)$, but where the family $\{l_0, \dots, l_k\}$ spans a $k$-simplex if and only if all the pairs $(l_i, l_j)$ are $1$-simplices. We will denote this by $W^w_VR$.
+\end{defn}
+
+\bibliographystyle{amsplain}
+{\small\bibliography{../dbrefs}}
+\end{document}

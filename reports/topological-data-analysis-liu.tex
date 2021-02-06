@@ -4,6 +4,8 @@
 \input{../texhead-main} % Standard packages, page layout, theorem environments, macros, etc
 \input{../texhead-project} % Macros specific to this project.
 \usepackage{bbm}
+\usepackage{epigraph}
+\usepackage{float}
 \DeclareMathOperator{\Cech}{\check{C}}
 \author{Zhang Liu}
 \title{Notes on Topological Data Analysis}
@@ -31,7 +33,7 @@ First of all, there are four major advantages for using topological methods to d
 	
 	\item Studying geometric objects using Topology does not depend on the coordinates. 
 	
-	\item Functoriality. 
+	\item Functoriality. This is the most important advantage.
 	
 	\begin{defn}
 		For any topological space X, abelian group $A$, and integer $k\geq 0,$ there is assigned a group $H_k(X,A).$
@@ -93,6 +95,7 @@ Two spaces $X,Y$ are\textit{ homotopy equivalent} if there exiss a homotopy equi
 	Note that the Betti numbers can vary with the choice of the coefficients in $F$. 
 \end{defn}
 
+\section{Simplicial Complexes}
 
 \begin{defn}
 	An \textit{abstract simplicial complex} is a pair $(V, \Sigma)$, where $V$ is a finite set, and $\Sigma$ is a family of non-empty subsets of $V$ such that 
@@ -154,7 +157,7 @@ However, for finite metric spaces, the Delaunay complex generically produces deg
 	
 	Then we define the\textit{strong witness complex} attached to this data to be the complex $W^s(X,\mathcal{L}, \epsilon)$ whose vertex set is $\mathcal{L}$, and where a collection $\{l_0, \dots, l_k\}$ spans a $k$-simplex if and only if there is a point $x \in X$ (the witness) so that $d(x, l_i)\leq m_x + \epsilon$ for all $i$. 
 	
-	We can also consider the version of this complex in which the $1$-simplices are identical to those of $W(X,\mathcal{L},\epsilon)$, but where the family $\{l_0, \dots, l_k\}$ spans a $k$-simplex if and only if all the pairs $(l_i, l_j)$ are $1$-simplices. We will denote this by $W^s_VR$.
+	We can also consider the version of this complex in which the $1$-simplices are identical to those of $W(X,\mathcal{L},\epsilon)$, but where the family $\{l_0, \dots, l_k\}$ spans a $k$-simplex if and only if all the pairs $(l_i, l_j)$ are $1$-simplices. We will denote this by $W^s_{VR}$.
 \end{defn}
 
 A modified version of the strong witness complex is also useful:
@@ -162,8 +165,120 @@ A modified version of the strong witness complex is also useful:
 \begin{defn}
 	We construct the\textit{weak witness complex}, $W^w(X,\mathcal{L}, \epsilon)$, attached to the given data by declaring that a family $\Lambda = \{l_0, \dots, l_k\}$ spans a $k$-simplex if and only if $\Lambda$ and all its faces admit $\epsilon$ weak witnesses. 
 	
-	Similar to the definition for strong witness complex, we can also consider the version of the weak witness complex in which the $1$-simplices are identical to those of $W(X,\mathcal{L},\epsilon)$, but where the family $\{l_0, \dots, l_k\}$ spans a $k$-simplex if and only if all the pairs $(l_i, l_j)$ are $1$-simplices. We will denote this by $W^w_VR$.
+	Similar to the definition for strong witness complex, we can also consider the version of the weak witness complex in which the $1$-simplices are identical to those of $W(X,\mathcal{L},\epsilon)$, but where the family $\{l_0, \dots, l_k\}$ spans a $k$-simplex if and only if all the pairs $(l_i, l_j)$ are $1$-simplices. We will denote this by $W^w_{VR}$.
 \end{defn}
+
+\section{Category Theory Pre-requisites}
+\epigraph{It frames a possible template for any
+mathematical theory: the theory should have
+nouns and verbs, i.e., objects, and morphisms,
+and there should be an explicit notion of
+composition related to the morphisms; the theory
+should, in brief, be packaged by a category.}
+{Barry Mazur, ``When is one thing equal to some
+other thing?”}
+
+\begin{defn}
+	A \textit{category} consists of
+	\begin{itemize}
+		\item a collection of objects $X,Y,Z,\dots$
+		\item a collection of morphisms $f,g,h,\dots$
+	\end{itemize}
+	so that:
+	\begin{itemize}
+		\item Each morphism has specified domain and codomain objects; the notation $f : X \to Y$
+		signifies that $ f$ is a morphism with domain $X$ and codomain $Y$.
+		\item Each object has a designated identity morphism $\mathbbm{1}_X : X \to X$.
+		\item For any pair of morphisms $f,g$ with the codomain of $f$ equal to the domain of $g$, there exists a specified composite morphism $gf$ whose domain is equal to the domain of
+		$f$ and whose codomain is equal to the codomain of $g$, i.e.,:
+		$$f : X \to Y, g: Y \to Z \rightsquigarrow  g f : X \to Z .$$
+	\end{itemize}
+\end{defn}
+
+A natural question to ask is: what is a morphism between categories? This leads to the definition of a functor:
+\begin{defn}
+	A \textit{functor} $F : C \to D$, between categories $C$ and $D$, consists of the following data:
+	\begin{itemize}
+		\item An object $F_c \in D$, for each object $c \in C$.
+		\item A morphism $F f : Fc \to Fc^\prime \in D$, for each morphism $f : c \to c^\prime \in C$, so that the	domain and codomain of $F f$ are, respectively, equal to $F$ applied to the domain or codomain of $f$.
+	\end{itemize}
+
+	The assignments are required to satisfy the following two functoriality axioms:
+	\begin{itemize}
+		\item For any composable pair $f, g in C$,$Fg \cdot F f = F(g \cdot f).$
+		\item For each object $c$ in $C$, $F(\mathbbm{1}_c) = \mathbbm{1}_{Fc}.$
+	\end{itemize}
+
+	Put concisely, a functor consists of 
+	
+	\begin{enumerate}
+		\item a mapping on objects and 
+		\item a mapping on morphisms that preserves all of the structure of a category, namely domains and codomains,	composition, and identities.
+	\end{enumerate}
+\end{defn}
+
+As already mentioned in Section 1, functoriality plays a key role in topological data analysis.  
+
+\cite{}
+
+\begin{defn}
+	Let $A$ be a ring. A \textit{left module} $M$ over $A$ consists of an abelian group (also denoted $M$) and a law of composition $A \times M \to M$ (denoted $(a, x) \mapsto ax)$ such that
+	
+	\begin{align}
+	a(bx)=(ab)x &\text{ for }a, b \in A, x \in M, \\
+	1x = x &\text{ for } x \in M,\\
+	(a + b)x = ax + bx &\text{ for } a, b \in A, x \in M,\\
+	a(x + y) = ax + ay &\text{for } a \in A, x, y \in M.
+	\end{align}
+
+	(4) asserts that $\rho(a) : M \to M $defined by $\rho(a)(x) = ax$ is an endomorphism of the	underlying abelian group of the module, while the first three statements assert that $\rho : A \to End(M)$
+	is a ring homomorphism. Conversely, given such a homomorphism, we may define a module structure on $M$
+	by setting $ax = \rho(a)(x)$.
+	
+	Analogically, we can define the right module over $A$.
+\end{defn}
+
+Note that the concept of module is a generalization of the concept of vector space. The condition that ``a vector space is finite dimensional” generalizes to the condition that ``a module is finitely generated”. A basis of a module is a generating set that is linearly independent over the ring. Unfortunately, such sets rarely exist: only free modules have bases. Usually, we have to consider a (minimal) system of generators instead of a basis.
+
+\begin{defn}
+ A ring R is called \textit{graded} (or more precisely, $\mathbb{Z}$-graded ) if there exists a	family of subgroups ${Rn}_{n\in \mathbb{Z}}$ of $R$ such that
+ \begin{enumerate}
+ 	\item $R = \oplus_n R_n$ (as abelian groups), and
+ 	\item $R_n \cdot R_m \subseteq R_{n+m} \forall n, m.$
+ \end{enumerate}
+\end{defn}
+
+\begin{defn}
+	Let $R$ be a graded ring and $M$ an $R$-module. We say that $M$ is a\textit{ graded
+	$R$-module} (or has an $R$-grading) if there ${M_n}{n\in \mathbb{Z}} $ of $M$ such	that
+
+\begin{enumerate}
+	\item $M = \oplus_n M_n$ (as abelian groups), and
+	\item $R_n \cdot M_m \subseteq M_{n+m} \forall n, m.$
+\end{enumerate}
+
+	If $u \in M \setminus \{0\}$ and $u = u_{i_1} + \cdots + u{i_k} $ where $u_{i_j}\in R_{i_j}\setminus \{0\}$, then $u_{i_1}	, \dots, u{i_k}$ 
+	are called\textit{ the homogeneous components } of $u$. 
+\end{defn}
+
+\section{Persistence}
+
+The main idea of \textit{persistence} is that instead of selecting a fixed value of the threshhold $\epsilon$, we would like to obtain a useful summary of the homological information for all the different values of $\epsilon$ at once. 
+
+\begin{defn}
+	Let $\underline{C}$ be any category, and $\mathcal{P}$ a partially ordered set. We regard $\mathcal{P}$
+	as a category $\underline{\mathcal{P}}$ in the usual way, i.e. with object set $\mathcal{P}$, and with a unique morphism	from $x$ to $y$ whenever $x \leq y$. Then by a $\mathcal{P}$-persistence object in $C$ we mean a functor
+	$\phi : \mathcal{P} \to C$.
+	
+	 More concretely, it means a family $\{c_x\}{x\in \mathcal{P}} $of objects of $C$ together with morphisms $\phi: xy : cx \to cy$ whenever$ x \leq y$, such that $\phi_{yz} \circ \phi_{xy} = \phi_{xz}$ whenever $x \leq y \leq z$. Note that the $\mathcal{P}$-persistence objects in $C$ form a category in their own	right, where a morphism $F$ from $\phi$ to $\Phi$ is a natural transformation. Again, in
+	more concrete terms, a morphism from a family $\{c_x, \phi_{xy}\}$ to a family $\{d_x, \Phi_{xy}\}$ is a family of morphisms $\{f_x\}$, with $f_x : c_x \to d_x$, and where the diagrams commute:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.3\linewidth]{gfx/tda5-1}
+		\label{fig:tda5-1}
+	\end{figure}
+\end{defn}
+
 
 \bibliographystyle{amsplain}
 {\small\bibliography{../dbrefs}}

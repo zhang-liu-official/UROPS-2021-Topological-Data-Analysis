@@ -6,7 +6,7 @@
 
 ## Objective: 
 
-The aim of the project is to investigate the effectiveness of applying methods in the emerging field of topological data analysis to solve problems that involve natural language data. We will study the state-of-the-art method of persistent homology and several notable applications in computational analysis of natural language. In particular, we hope to investigate how effective the topological approach is compared to the traditional regression-based tools and why, which is still an open problem (Savle et al., 2019). 
+The aim of the project is to investigate the effectiveness of applying methods in the emerging field of topological data analysis to solve problems that involve high-dimensional neural data. We will study the state-of-the-art method of persistent homology and several notable applications in computational neuroscience.
 
  
 ## Potential list of deliverables: 
@@ -22,71 +22,62 @@ Code for relevant implementations or proposed approach/solution to the problem i
 A final report and/or presentation detailing the topics learned and findings 
  
 
-## Methods/Techniques: 
+## Sturcture of the project:
 
-In this project, we study the mathematical foundations of the state-of-the-art methods in topological data analysis as well as the existing semantic space models. Further, we aim to investigate the effectiveness of these methods as well as to propose and possibly implement some improvements.  
-
+There are two parts to the project. First, we study the mathematical foundations of the state-of-the-art methods in topological data analysis. 
+We then implement the method to discover topological features of high-dimensional neural data. 
  
 
-## Estimated timeline: 
+## Timeline of the project:
 
- 
-
-Week 1: Select topic  
+1. Select topic  
 
 Milestone: write up project proposal 
 
  
-
-Week 2: Conduct literature Review 
+2. Conduct literature Review 
 
 Milestone: write up report summarizing previous research and an overview of the pre-requisites 
 
  
-
-Week 3 to 4: Study the basics of Topological Data Analysis 
-
-Milestone: write up report explaining the theories and/or techniques 
-
- 
-
-Week 5 to 6: Study relevant applications of topology in Mathematical Linguistics 
+3. Study the basics of Topological Data Analysis 
 
 Milestone: write up report explaining the theories and/or techniques 
 
- 
 
-Recess Week 
+4. Study relevant applications of topology in computational neuroscience
+
+Milestone: write up report explaining the theories and/or techniques 
 
 (Finish the remaining pre-requisite knowledge, if any. Try to identify some problems/approaches for discussion in Week 7.) 
 
  
 
-Week 7: Define a problem and propose some possible approach(es).  
+5. Define a problem and propose some possible approach(es).  
 
 Milestone: write up a tentative abstract 
 
  
 
-Week 8 to 9: Implement preliminary experiments, with help from the code and tutorials available online.  
+6. Implement preliminary experiments, with help from the code and tutorials available online.  
 
 Milestone: potentially some code and/or solutions for subproblems 
 
  
 
-Week 10: Reformulate and evaluate the proposed problem/approaches and the direction of the research.  
+7. Reformulate and evaluate the proposed problem/approaches and the direction of the research.  
 
 Milestone: write up a report for the findings/discussion 
 
  
 
-Week 11 to 12: Continue with the experiment. / Study relevant theories (if we realize that more theories are needed to understand/solve the problem) 
+8. Continue with the experiment. / Study relevant theories (if we realize that more theories are needed to understand/solve the problem) 
 
 Milestone: potentially some code and/or solutions for subproblems 
 
  
 
-Week 13 and end of semester: Conclude the project and summarize the findings.  
+9. Conclude the project and summarize the findings.  
 
 Milestone: a final report and a presentation (including topics learned, experiments/implementations, findings, and discussions) 
  
@@ -98,7 +89,7 @@ The field of topological Data Analysis has been growing rapidly in the recent tw
 
 ## Notable existing research: 
 
-Topological Data Analysis for Discourse Semantics? (in 2019 by researchers at UNC Charlotte) 
+<!-- Topological Data Analysis for Discourse Semantics? (in 2019 by researchers at UNC Charlotte) 
 
 https://www.aclweb.org/anthology/W19-0605.pdf 
 
@@ -122,11 +113,11 @@ Persistent Topology of Syntax (in 2017 by researchers at Caltech)
 
 http://www.its.caltech.edu/~matilde/LinguisticsToronto8.pdf 
 
-https://link.springer.com/article/10.1007/s11786-017-0329-x 
+https://link.springer.com/article/10.1007/s11786-017-0329-x  -->
 
  
 
-## Other selected relevant works:  
+<!-- ## Other selected relevant works:  
 
 Movie Genre Detection Using Topological Data Analysis 2018 
 
@@ -148,7 +139,7 @@ A Topological Representation of Information: A Heuristic Study
 
 https://scialert.net/fulltext/?doi=jas.2008.3743.3747 
 
-Persistent Homology for Natural Data Analysis 
+Persistent Homology for Natural Data Analysis  -->
 
  
 
@@ -166,7 +157,7 @@ Introduction to Persistent Homology
 Stanford Seminar - Topological Data Analysis: How Ayasdi used TDA to Solve Complex Problems 
 
 
-The mapper 
+The mapper algorithm
 
 Gunnar Carlsson: "Topological Modeling of Complex Data" 
 

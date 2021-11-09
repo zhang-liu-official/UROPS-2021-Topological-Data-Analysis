@@ -6,6 +6,7 @@
 \usepackage{bbm}
 \usepackage{epigraph}
 \usepackage{float}
+\usepackage{biblatex}
 \DeclareMathOperator{\Cech}{\check{C}}
 \author{Zhang Liu}
 \title{Notes on Topological Data Analysis}
@@ -274,7 +275,7 @@ The main idea of \textit{persistence} is that instead of selecting a fixed value
 	more concrete terms, a morphism from a family $\{c_x, \phi_{xy}\}$ to a family $\{d_x, \Phi_{xy}\}$ is a family of morphisms $\{f_x\}$, with $f_x : c_x \to d_x$, and where the diagrams commute:
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.3\linewidth]{gfx/tda5-1}
+		\includegraphics[width=0.3\linewidth]{figures/tda5-1.png}
 		\label{fig:tda5-1}
 	\end{figure}
 \end{defn}
@@ -287,20 +288,15 @@ There are at least two useful ways to construct such maps.
 
 The summary of the methodology is as follows:
 \begin{enumerate}
-	\item Construct the \mathbb{R}-persistence simplicial complex using ˇCech, Vietoris-
+	\item Construct the $\mathbb{R}$-persistence simplicial complex using Cech, Vietoris-
 	Rips, or witness methods. We will denote it by $\phi$.
-	\item Select a partial order preserving map f : N → R.
+	\item Select a partial order preserving map $f: \mathbb{N} \to \mathbb{R}$.
 	\item Construct the associated N-persistence simplicial complex.
-	\item Construct the associated N-persistence chain complex {C∗(n)}n with coefficients
+	\item Construct the associated N-persistence chain complex with coefficients
 	in F. (It is evident from the finiteness hypotheses on X and
 	the nature of the constructions that the associated N-persistence F-vector
 	spaces are tame.)
 	\item Compute the barcodes associated to the N-persistence F-vector spaces
-	{Hi(C∗(n), F)}n.
 \end{enumerate}
 
-
-
-\bibliographystyle{amsplain}
-{\small\bibliography{../dbrefs}}
 \end{document}

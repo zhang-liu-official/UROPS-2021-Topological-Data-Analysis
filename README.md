@@ -1,7 +1,6 @@
 # UROPS 2021 Topological Data Analysis
 
-## Project Title: Persistent Homology of Semantic Spaces 
-
+## Project Title: Persistent Homology of High-Dimensional Point Clouds
  
 
 ## Objective: 

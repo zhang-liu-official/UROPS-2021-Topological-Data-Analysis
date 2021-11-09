@@ -1,0 +1,19 @@
+\chapter{Introduction} 
+\label{Chapter1-intro} 
+
+\section{Background}
+Topological Data Analysis (TDA) is a recent field that emerged from various works in applied (algebraic) topology and computational geometry during the first decade of the century. It started as a field with the foundational works of (\cite{edelsbrunner_topological_2002}) and (\cite{Zom2005a}) and was popularized by (\cite{carlsson_topology_2009}). The aim of TDA is to extract, analyze and make use of the topological and geometric structures underlying data. These data are usually represented as point clouds in Euclidean or more general metric spaces and are often high-dimensional. (\cite{chazal_introduction_2021})
+
+\section{Aim and Significance}
+Our project is motivated by the following question: how can high-dimensional point clouds be compared based on their topological structures? To this end, we studied the theory of persistent homology, dimensionality reduction, and various distance metrics useful for high-dimensional data analysis. Further, we proposed an approach to compare point clouds based on the $p$-Wasserstein distance of their topological fingerprints. We illustrated the approach with a concrete application using neural spiking data from lab experiments. The code for this project can be found in the GitHub repository \footnote{https://github.com/zhang-liu-official/UROPS-2021-Topological-Data-Analysis} and Appendix \ref{AppendixA}.
+
+The topological methods used in this project provide a new perspective to compare data point clouds as shapes. Topological features capture the global structure of the data, which is especially important in applications where the notion of connectedness and clusters are salient.
+
+
+\section{Prior works applying topological methods in neuroscience}
+
+The first work that applied topological methods in neuroscience is (\cite{singh_top_v1_2008}). The authors applied computational topology to analyze neural population activity in the primary visual cortex and concluded that the topological structure of neural population activity is align with the topological structure of a $2$-sphere both when the cortex is spontaneously active and when evoked by natural images.
+
+Following that, there have been many applications of persistent homology in studying the topological structure of neural population activity across different systems. A notable application is (\cite{chaudhuri_intrinsic_2019}), where the authors applied persistent homology to study the the neural population activity from the post-subiculum and anterodorsal thalamus. They showed that the head direction of mice can be decoded from a one-dimensional ring structure. A recent addition in this line of work was by (\cite{beshkov_geodesic-based_2021}). They showed that when using the geodesic distance instead of the Euclidean distance, persistent homology method was able to successfully identify highly non-linear features. They then provided an application using the Neuropixels dataset recorded in mouse visual cortex after stimulation with drifting gratings.
+
+An alternative approach has been taken by several researchers to to use spike train correlation measures to define the ``distance" between two neurons by how similar the firing rates of two neurons are given a stimuli. This was computed this from the neural spiking data. With the spike train correlation measures, they then obtained the so-called neural clique topology. Two notable works are  (\cite{giusti_clique_2015}) and (\cite{bardin_topological_2019}). 

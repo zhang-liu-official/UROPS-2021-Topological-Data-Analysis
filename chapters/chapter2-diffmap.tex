@@ -1,15 +1,17 @@
-\chapter{Chapter 2: Non-linear Dimensionality Reduction} 
-\label{Chapter2} 
+\chapter{Dimensionality Reduction} 
+\label{chapter2-diffmap}
 
-\section{Diffusion Maps}
-References for this section:\cite{coifman_geometric_2005}, \cite{coifman_diffusion_2006}.
-\par \textbf{Some key ideas of diffusion maps: }
+Diffusion map is one of the common dimensionality reduction methods. This chapter gives an overview of the main ideas and steps in diffusion map. The main references for this chapter are (\cite{coifman_geometric_2005}) and (\cite{coifman_diffusion_2006}).
+
+\section{Key ideas of diffusion map}
+
 \begin{itemize}
     \item The similarity kernel gives us the \textit{local} geometry. As the time steps move forward, we integrate the local geometry and thus reveal the geometric structures at different scales. 
     \item A cluster from a random walk is a region where the probability of escaping this region is low.
 \end{itemize}
-\par \textbf{Main steps of diffusion maps: }
 
+\section{Main steps of diffusion map}
+Now, we summarize the main steps of diffusion maps:
 \begin{enumerate}
     \item Construct weighted graph using Gaussian similarity kernel. Each entry in the similarity matrix, $W_{i j}$, is the pairwise similarity value between inputs $i$ and $j$ and is taken as the weight of the edge between nodes $i$ and $j$. 
     
@@ -70,7 +72,3 @@ References for this section:\cite{coifman_geometric_2005}, \cite{coifman_diffusi
        \end{enumerate}
     \end{itemize}
 \end{enumerate}
-
-\section{Implementation}
-
-\section{Results and Discussions}

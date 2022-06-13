@@ -82,7 +82,7 @@ Two spaces $X,Y$ are\textit{ homotopy equivalent} if there exists a homotopy equ
 	The \underline{nerve} of $\mathcal{U}$, denoted by $N(\mathcal{U})$, will be the abstract simplicial complex with vertex set $A$, and where a family $\{\alpha_0, \dots, \alpha_k\}$ spans a $k$-simplex if and only if $U_{\alpha_0}\cap U_{\alpha_1} \cap \cdots \cap U_{\alpha_k} \neq \emptyset.$
 \end{defn}
 
-One reason that this construction is very useful in the following ``Nerve Theorem." This theorem gives the criteria for $N(\mathcal{U})$ to be homotopy equivalent to the underlying topological space $X$.
+One reason that this construction is very useful in the following "Nerve Theorem." This theorem gives the criteria for $N(\mathcal{U})$ to be homotopy equivalent to the underlying topological space $X$.
 
 \begin{thm}[Nerve Theorem]
 Suppose that $X$ and $U$ are as above, and suppose that the covering consists of open sets and is numerable. Suppose further that for all $\emptyset \subseteq A,$ we have that $\bigcap_{s\in S} U_s$ is either contractible or empty. Then $N(\mathcal{U})$ is homotopy equivalent to $X$.
@@ -230,10 +230,10 @@ Each member of $\Hom_k(\triangle;\FF)$ is a \underline{homology class}. Each suc
 Let $[z]$ denote the homology class containing the cycle $z$. 
 \end{defn}
 
-\begin{defn}[Homology as ``holes"]
-In certain well-behaved cases, homology can be interpreted as an algebraic measure on the amount of ``holes" in a simplicial complex $\triangle$.
+\begin{defn}[Homology as "holes"]
+In certain well-behaved cases, homology can be interpreted as an algebraic measure on the amount of "holes" in a simplicial complex $\triangle$.
 
-Formally, given $X\subseteq \RR^n$, a ``hole" of $X$ is a bounded connected component of $\RR^n\ X$. For a given $k\geq 0,$ suppose the $(k+1)$-skeleton $\triangle^{(k+1)}$ of $\triangle$ has a geometric realization $X \subseteq \RR^n$. Then $\Hom_k(\triangle;\FF)$ is a free $\FF$-module of rank equal to the number of holes of $X$. 
+Formally, given $X\subseteq \RR^n$, a "hole" of $X$ is a bounded connected component of $\RR^n\ X$. For a given $k\geq 0,$ suppose the $(k+1)$-skeleton $\triangle^{(k+1)}$ of $\triangle$ has a geometric realization $X \subseteq \RR^n$. Then $\Hom_k(\triangle;\FF)$ is a free $\FF$-module of rank equal to the number of holes of $X$. 
 
 Homology associates a vector space $H_k(X)$ to a topological space $X$ for each $k\in \NN$.
 \begin{itemize}
@@ -242,13 +242,13 @@ Homology associates a vector space $H_k(X)$ to a topological space $X$ for each 
     \item $H_2(X)$ is the number of voids in X.
 \end{itemize}
 \begin{rmk}
-Note, however, that in the general metric spaces, the interpretation that homology measures the amount of ``holes" does not hold.
+Note, however, that in the general metric spaces, the interpretation that homology measures the amount of "holes" does not hold.
 \end{rmk}
 \end{defn}
 
 \section{Persistent homology}
 
-The main idea of \textit{persistence} is that instead of selecting a fixed value of the threshold $\epsilon$, we would like to obtain a useful summary of the homological information for all the different values of $\epsilon$ at once. As $\epsilon$ increases, we add simplicies to the complexes and detect which features ``persist."
+The main idea of \textit{persistence} is that instead of selecting a fixed value of the threshold $\epsilon$, we would like to obtain a useful summary of the homological information for all the different values of $\epsilon$ at once. As $\epsilon$ increases, we add simplicies to the complexes and detect which features "persist."
 
 The main advantages of persistent homology are threefold: 
 \begin{enumerate}
@@ -327,7 +327,7 @@ A \underline{persistence module} $\mathscr{M}$ is a family of $R$-modules $M^i$,
 \begin{thm}[Barcode as the persistence analogue of Betti number]
 The rank of $H_k^{i\to j}(\mathscr{C}; F)$ gives the number of intervals in the barcode of $H_k^{i\to j}(\mathscr{C}; F)$ spanning the parameter interval $[i,j]$. In particular, $H_*^{i\to j}(\mathscr{C}^i_*; F)$ gives the number of intervals that contain $i$.
 \begin{rmk}
-As with Betti number, the barcode for $H_k$ does not give the actual structure of the homology group, but just a continuously parameterized rank. The barcode is useful in that it can qualitatively filter out topological noise (since they are ``short-lived" features) and capture significant topological features (features that persist over increasing values of $\epsilon$).
+As with Betti number, the barcode for $H_k$ does not give the actual structure of the homology group, but just a continuously parameterized rank. The barcode is useful in that it can qualitatively filter out topological noise (since they are "short-lived" features) and capture significant topological features (features that persist over increasing values of $\epsilon$).
 \end{rmk}
 \end{thm}
 
@@ -368,14 +368,14 @@ As with Betti number, the barcode for $H_k$ does not give the actual structure o
 \section{Commonly used complexes}
 
 \begin{defn}[\v{C}ech complex]
-	For any subset $V\subseteq X$ for which $X = \bigcup_{v\in V}B_\epsilon(v)$, one can construct the nerve of the covering $\{B_\epsilon(v)\}_{v\in V}$. This construction is referred to as the \underline{``\v{C}ech complex"} attached to $V$ and is denoted as $\Cech(V,\epsilon)$.
+	For any subset $V\subseteq X$ for which $X = \bigcup_{v\in V}B_\epsilon(v)$, one can construct the nerve of the covering $\{B_\epsilon(v)\}_{v\in V}$. This construction is referred to as the \underline{"\v{C}ech complex"} attached to $V$ and is denoted as $\Cech(V,\epsilon)$.
 \end{defn}
 
 \begin{thm}
 Let $M$ be a compact Riemannian manifold. Then there is a positive number $e$ so that $\Cech(M, \epsilon)$ is homotopy equivalent to $M$ whenever $\epsilon \leq e$. Moreover, for every $ \epsilon \leq e$, there is a finite subset $V \subseteq M$ so that the subcomplex of $\Cech(V,\epsilon) \subseteq \Cech(M, \epsilon)$ is also homotopy equivalent to $M$.
 \end{thm}
 
-However, this construction is computationally expensive. A solution is to construct a simplicial complex which can be recovered solely from the edge information, which motivates the following construction known as the ``Vietoris-Rips complex." 
+However, this construction is computationally expensive. A solution is to construct a simplicial complex which can be recovered solely from the edge information, which motivates the following construction known as the "Vietoris-Rips complex." 
 
 \begin{defn}[Vietoris-Rips complex]
 	Let $X$ be a metric space with metric $d$. Then the  \underline{Vietoris-Rips complex} for $X$, attached to the parameter $\epsilon$, denoted by $VR(X,\epsilon)$, will be the simplicial complex whose vertex set is $X$, and where $\{x_0,\dots, x_k\}$ spans a $k$-simplex if and only if $d(x_i,x_j) \leq \epsilon$ for all $0\leq i,j\leq k.$
@@ -398,7 +398,7 @@ However, even the VR complex is computationally expensive. A solution, again, is
 	Similar to how we define the \v{C}ech complex above, we define the \underline{Delaunay complex} attached to $\mathcal{L}$ to be the nerve of this covering.
 \end{defn}
 
-However, for finite metric spaces, the Delaunay complex generically produces degenerate (i.e. discrete) complexes with no $1$-simplices. To solve this, we modify the definition to accommodate pairs of points which are ``almost" equidistant from a pair of landmark points. We thus have the definition below: 
+However, for finite metric spaces, the Delaunay complex generically produces degenerate (i.e. discrete) complexes with no $1$-simplices. To solve this, we modify the definition to accommodate pairs of points which are "almost" equidistant from a pair of landmark points. We thus have the definition below: 
 
 \begin{defn}[Strong witness complex]
 	Let X be any metric space, and suppose we are given a finite set $\mathcal{L}$ of points in $X$ (called the landmark set), and a parameter $\epsilon> 0$. For every point $x \in X$, we let $m_x$ denote the distance from this point to the set $\mathcal{L}$, i.e., the minimum distance from $x$ to any point in the landmark set.

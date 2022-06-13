@@ -43,24 +43,20 @@ The following flowchart shows a schematic summary of our approach.
  
 \section{Data Collection}
 
-The neural spiking data were collected from lab experiments conducted on mice. The experimental setup is shown in the figure below. Visual stimuli of moving artificial gratings of six different types were flashed in front of the mouse. Each visual stimuli were moving in eight directions. Neuron output of the mouse retina was recorded with electrodes and encoded in peristimulus (PSTH) diagrams. Each PSTH diagram shows the firing rate of one neuron over time for each of the eight directions respectively. Brighter pixels indicate higher firing rates.
+The neural spiking data (\cite{dyballa_manifold_2021}) were collected from lab experiments with the setup shown in the figure below. Six different types of flow stimuli developed in \cite{visual-flow} were flashed in front of the mouse. The electrodes recorded the neural output from the mouse's retina while it viewed each flow stimuli moving in eight directions respectively. The neural recordings were encoded in peristimulus (PSTH) diagrams, each of which showed the firing rate of one neuron over time for the eight directions respectively. In the PSTH diagram the brighter pixels indicate higher firing rates.
  \begin{figure}[H]
         \centering
             \includegraphics[width=0.55\textwidth]{figures/Slide5.jpg}
             \caption{Visualising neural data from lab experiments.}
     \end{figure}
     
-\begin{defn}[Neural population response]
-    Suppose $\mathcal{S}$ is a set of $S$ visual stimuli (e.g., images) $\mathcal{S} = \{s_1, s_2,\dots, s_S\}$, each having $T$ number of shifts (which is equivalent to the number of pixels in the PSTH diagrams in this application).
-    
-    The \underline{neural population response} of a set of $N$ neurons to a stimulus $m_i$ over all transformations is $\mathcal{N} = \{\vec{n}_1, \vec{n}_2, \dots, \vec{n}_N\},$ where $\vec{n}_i \in \mathbb{R}^T$. 
-\end{defn}
+\par The neural spiking data is of three dimensions: the first dimension represents the $698$ neurons; the second dimension represents the six different types of stimuli; the third dimension represents the vectorized PSTH diagrams, each of which has $8\times 33 = 264$ pixels. This gives us a $3$-way tensor:
 
 \begin{defn}[Neural tensors]
-    Each \underline{neural tensor} encodes the neural population response of a set of neurons to a set of stimulus over all transformations. It is thus a $3$-way tensor of dimension $N$-by-$S$-by-$T$.
-\end{defn} 
+    Suppose $\mathcal{S}$ is a set of flow stimuli $\mathcal{S} = \{s_1, s_2,\dots, s_K\}$, each moving over  $T$ time steps. The \underline{neural population response} of a set of $N$ neurons to some stimulus $s_i$ over time is $\mathcal{N} = \{\vec{n}_1, \vec{n}_2, \dots, \vec{n}_N\},$ where $\vec{n}_i \in \mathbb{R}^{T}$. 
 
-The neural spiking data set used in this project is represented by a $3$-way tensor of dimension $698$-by-$6$-by-$264$. The three dimensions represent the following respectively: there are in total $698$ neurons $6$, $6$ types of visual stimuli, and $264$ number of pixels in the PSTH diagram.
+    Each \underline{neural tensor} encodes the neural population response of $N$ neurons to $K$ flow stimuli over $T$ time steps and is thus a $3$-way $N$-by-$K$-by-$T$ tensor.
+\end{defn}
 
 With this neural spiking data set, we can create six point clouds, each corresponds to the neural population response towards one type of stimuli, which we denote as $X_1, X_2, \dots,X_6$. Each of the point cloud $X_i$ is thus represented by a matrix of dimension $698$-by-$264$, giving us a point cloud of $698$ points in $\RR^{264}$. 
 
@@ -71,7 +67,7 @@ The main motivation behind dimensionality reduction is that the intrinsic dimens
 The Manifold Hypothesis states that real-world high-dimensional data lie on low-dimensional manifolds embedded within the high-dimensional space. (\cite{deepai_2019})
 
 % main idea behind manifold learning:
-In the context of neuroscience, neural spiking data is high-dimensional, but the neural connections constrain the possible patterns of population activity (\cite{okun_diverse_2015}, \cite{sadtler_neural_2014}, \cite{tsodyks_attractor_1999}) and that the possible patterns are confined to a low-dimensional manifold (\cite{stopfer_intensity_2003},  \cite{yu_gaussian-process_2009}) spanned by a few independent patterns that are called ``neural modes." (\cite{gallego_neural_2017})
+In the context of neuroscience, neural spiking data is high-dimensional, but the neural connections constrain the possible patterns of population activity (\cite{okun_diverse_2015}, \cite{sadtler_neural_2014}, \cite{tsodyks_attractor_1999}) and that the possible patterns are confined to a low-dimensional manifold (\cite{stopfer_intensity_2003},  \cite{yu_gaussian-process_2009}) spanned by a few independent patterns that are called "neural modes." (\cite{gallego_neural_2017})
 
 In terms of implementation, we used the pydiffmap package (\cite{eastman_pydiffmap_2017}). In our implementation, we reduced the dimensionaltity of each point cloud from the space of $\RR^{264}$ to $\RR^3$ using diffusion map. The resulting three-dimensional embedding of the original point clouds colored by the first three diffusion coordinates are shown below:
 \begin{figure}[H]

@@ -136,28 +136,35 @@ headsepline, % Uncomment to get a line under the header
 \frontmatter 
 \pagestyle{plain} 
 
-\begin{titlepage}
-\includepdf[pages=-,pagecommand={},width=\textwidth]{titlepage.pdf}
+% \begin{titlepage}
+% \includepdf[pages=-,pagecommand={},width=\textwidth]{titlepage.pdf}
 
+% \end{titlepage}
+
+% \begin{acknowledgements}
+% \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
+%     I would like to thank my mentor Prof.~Han Fei for his continual support throughout the project. There have been ups and downs in this project, but Prof.~Han Fei has helped me stay flexible and keep a keen spirit for learning and discovery. I am also grateful for support from my family and friends.
+% \end{acknowledgements}
+
+% \begin{abstract}
+% \chapter{Abstract}
+
+% \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
+
+\begin{titlepage}\centering
+\vspace*{\fill}
+{\LARGE{$p$-Wasserstein Distance between High-dimensional Point Clouds via Persistent Homology}}
+
+\vspace*{\fill}
+\textbf{Key words:} \keywordnames
 \end{titlepage}
 
-\begin{acknowledgements}
-\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-    I would like to thank my mentor Prof.~Han Fei for his continual support throughout the project. There have been ups and downs in this project, but Prof.~Han Fei has helped me stay flexible and keep a keen spirit for learning and discovery. I am also grateful for support from my family and friends.
-\end{acknowledgements}
 
-\begin{abstract}
-\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
-\textbf{Key words: \keywordnames}
+% Topological Data Analysis (TDA) is a recent field that emerged from various works in applied algebraic topology and computational geometry. The aim of TDA is to extract and analyze relevant topological and geometric features of real-world data, which are often high-dimensional and have complex underlying geometric structures. Our project is motivated by the question: how can high-dimensional point clouds be compared based on their topological structures?
 
-Topological Data Analysis (TDA) is a recent field that emerged from various works in applied (algebraic) topology and computational geometry. 
-The aim of TDA is to extract and analyze relevant topological and geometric features of real-world data, which are often high-dimensional and have complex underlying geometric structures. 
-
-Our project is motivated by the question: how can high-dimensional point clouds be compared based on their topological structures? 
-To this end, we proposed an approach to compare point clouds based on the $p$-Wasserstein distance of their topological fingerprints. 
-We illustrated the approach with a concrete application in studying the neural population responses to different stimuli, each of which is represented as a high-dimensional point cloud. Our approach allowed us to quantify the pairwise similarity of the neural population responses in terms of their topological structures.
-Using this approach, we also compared the topological structure of the point cloud associated with each neural population response with that of synthetic data sampled from $2$-sphere and torus.
-\end{abstract}
+% To this end, we proposed an approach to compare point clouds based on the pWasserstein distance of their topological fingerprints. We illustrated the approach with a concrete application in studying the neural population responses in primate visual system to different visual stimuli. Each neural population response was represented as a highdimensional point cloud. Our approach allowed us to quantify the pairwise similarity of the neural population responses in terms of their topological structures. Using this approach, we also compared the topological structure of each neural population response with that of synthetic data sampled from 2-sphere and torus. Our results showed that in terms of topological structures, the neural response to one specific type of stimuli is significantly different from the others, which suggests that further investigation in neuroscience could
+% potentially uncover new understanding of the primate visual system. 
+% \end{abstract}
 
 \tableofcontents
 
@@ -176,5 +183,5 @@ Using this approach, we also compared the topological structure of the point clo
 
 \appendix 
 \input{appendix/appendixA}
-
+\input{appendix/appendixB}
 \end{document}

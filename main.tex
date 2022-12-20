@@ -109,16 +109,16 @@ headsepline, % Uncomment to get a line under the header
 %	THESIS INFORMATION
 %----------------------------------------------------------------------------------------
 
-\thesistitle{$p$-Wasserstein Distance between High-dimensional Point Clouds \\ via Persistent Homology} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+\thesistitle{Topology-based Comparison of Neural Population Responses via Persistent Homology and p-Wasserstein Distance} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
 \supervisor{Dr/Pr. FirstName \textsc{LastName}} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
 \examiner{Dr/Pr. FirstName \textsc{LastName}} % Your examiner's name, this is not currently used anywhere in the template, print it elsewhere with \examname
-\degree{B.Sc (Hons)} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
-\author{\textsc{Zhang} Liu} % Your name, this is used in the title page and abstract, print it elsewhere with \authorname
+\degree{} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
+\author{} % Your name, this is used in the title page and abstract, print it elsewhere with \authorname
 \addresses{} % Your address, this is not currently used anywhere in the template, print it elsewhere with \addressname
 
 \subject{Mathematical, Computational and Statistical Sciences} % Your subject area, this is not currently used anywhere in the template, print it elsewhere with \subjectname
 \keywords{applied topology, persistent homology, Wasserstein distance, dimensionality reduction, diffusion map} % Keywords for your thesis, this is not currently used anywhere in the template, print it elsewhere with \keywordnames
-\university{\href{https://www.nus.edu.sg/}{National University of Singapore}} % Your university's name and URL, this is used in the title page and abstract, print it elsewhere with \univname
+\university{} % Your university's name and URL, this is used in the title page and abstract, print it elsewhere with \univname
 \department{{}} % Your department's name and URL, this is used in the title page and abstract, print it elsewhere with \deptname
 \group{{}} % Your research group's name and URL, this is used in the title page, print it elsewhere with \groupname
 \faculty{{}} % Your faculty's name and URL, this is used in the title page and abstract, print it elsewhere with \facname
@@ -136,35 +136,61 @@ headsepline, % Uncomment to get a line under the header
 \frontmatter 
 \pagestyle{plain} 
 
-% \begin{titlepage}
-% \includepdf[pages=-,pagecommand={},width=\textwidth]{titlepage.pdf}
+\begin{titlepage}
+\includepdf[pages=-,pagecommand={},width=\textwidth]{titlepage.pdf}
 
-% \end{titlepage}
-
-% \begin{acknowledgements}
-% \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-%     I would like to thank my mentor Prof.~Han Fei for his continual support throughout the project. There have been ups and downs in this project, but Prof.~Han Fei has helped me stay flexible and keep a keen spirit for learning and discovery. I am also grateful for support from my family and friends.
-% \end{acknowledgements}
-
-% \begin{abstract}
-% \chapter{Abstract}
-
-% \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
-
-\begin{titlepage}\centering
-\vspace*{\fill}
-{\LARGE{$p$-Wasserstein Distance between High-dimensional Point Clouds via Persistent Homology}}
-
-\vspace*{\fill}
-\textbf{Key words:} \keywordnames
 \end{titlepage}
 
+\begin{acknowledgements}
+\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
+    I would like to thank my mentor Prof.~Han Fei for his continual support throughout the project. There have been ups and downs in this project, but Prof.~Han Fei has helped me stay flexible and keep a keen spirit for learning and discovery. I am also grateful for support from my family and friends.
+\end{acknowledgements}
 
-% Topological Data Analysis (TDA) is a recent field that emerged from various works in applied algebraic topology and computational geometry. The aim of TDA is to extract and analyze relevant topological and geometric features of real-world data, which are often high-dimensional and have complex underlying geometric structures. Our project is motivated by the question: how can high-dimensional point clouds be compared based on their topological structures?
+\begin{abstract}
+\chapter{Abstract}
 
-% To this end, we proposed an approach to compare point clouds based on the pWasserstein distance of their topological fingerprints. We illustrated the approach with a concrete application in studying the neural population responses in primate visual system to different visual stimuli. Each neural population response was represented as a highdimensional point cloud. Our approach allowed us to quantify the pairwise similarity of the neural population responses in terms of their topological structures. Using this approach, we also compared the topological structure of each neural population response with that of synthetic data sampled from 2-sphere and torus. Our results showed that in terms of topological structures, the neural response to one specific type of stimuli is significantly different from the others, which suggests that further investigation in neuroscience could
-% potentially uncover new understanding of the primate visual system. 
-% \end{abstract}
+\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
+
+% \begin{titlepage}\centering
+% \vspace*{\fill}
+% {\LARGE{$p$-Wasserstein Distance between High-dimensional Point Clouds via Persistent Homology}}
+
+% \vspace*{\fill}
+% \textbf{Key words:} \keywordnames
+% \end{titlepage}
+
+Topological Data Analysis (TDA) is a recent field that emerged from applied algebraic topology and computational geometry. The aim of TDA is to analyze the topological structures underlying real-world data that are usually represented as point clouds in some metric space and are often
+high-dimensional. 
+
+Neural population activity gives rise to a high-dimensional point cloud. 
+
+Our project is motivated by the question: how can high-dimensional neural population activity be compared based on their topological structures?
+
+To this end, we proposed an approach to compare point clouds based on the $p$-Wasserstein distance of their topological structures. 
+
+dim reduction 
+persistent homology 
+p-Wasserstein distance 
+why? 
+* When endowed with the Wasserstein metric, the space of persistence diagrams is complete and separable. This allows us to show that the standard statistical objects such as means, variances, and conditional probabilities are well defined. With this, we can perform statistical inference on persistence diagrams,
+
+We illustrated the approach with a concrete application in studying the high-dimensional neural population responses in the mouse retina to six different visual stimuli (low-frequency gratings, high-frequency gratings, 1-dot negative flows, 3-dot negative flows, 1-dot positive flows, and 3-dot positive flows). Each neural population response was represented as a high-dimensional point cloud. Our approach allowed us to quantify the pairwise similarity of the neural population responses in terms of their topological structures. 
+
+put in persistent homology somewhere! 
+
+Specifically, we investigated the topological structure of each neural population response and compared each against synthetic data sampled from 2-sphere and torus. 
+
+advantage of using our approach!! 
+
+Our results showed that in terms of topological structures, the neural response to low-frequency gratings is significantly different from other types of flow stimuli, which suggests that further investigation in neuroscience could potentially uncover new understanding of the primate visual system.
+inform further neuroscientific investigation 
+
+
+To this end, we studied the theory of persistent homology, dimensionality reduction, and various distance metrics useful for high-dimensional data analysis. Further, we proposed an approach to compare point clouds based on the $p$-Wasserstein distance of their topological fingerprints. We illustrated the approach with a concrete application using neural spiking data from lab experiments. The code for this project can be found in Appendix \ref{AppendixA}.
+
+The topological methods used in this project provide a new perspective to compare data point clouds as shapes. Topological features capture the global structure of the data, which is especially important in applications where the notion of connectedness and clusters are salient.
+\cite{Mileyko_2011}
+\end{abstract}
 
 \tableofcontents
 

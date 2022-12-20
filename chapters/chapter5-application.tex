@@ -11,29 +11,28 @@ The following flowchart shows a schematic summary of our approach.
 %   \node (BNN) at (-3,0.5) [draw, terminal, minimum width=\smbwd,  fill=yellow!20, minimum height=0.5cm] {Biological Neural Networks}; 
 %   \node (ANN) at (2.7,0.5) [draw, terminal, minimum width=\smbwd,  fill=yellow!20, minimum height=0.5cm] {Artificial Neural Networks}; 
   %------------
-  \node (experimental) at (0,-0.5) [draw, terminal, minimum width=\smbwd,  fill=red!20, minimum height=0.5cm]{neural output (lab experiments)};
+  \node (experimental) at (0,-0.5) [draw, terminal, minimum width=\smbwd,  fill=red!20, minimum height=0.5cm]{Neural population activity (lab experiments)};
 %   \node (artificial) at (2.7,-1)[draw, terminal,minimum width=\smbwd,  fill=red!20, minimum height=0.5cm]{neuron output (simulations)};
   %------------
-  \node (tensors) at (0,-2) [draw, terminal, minimum width=\smbwd,  fill=red!20, minimum height=0.5cm] {Neuron tensors}; 
+%   \node (tensors) at (0,-2) [draw, terminal, minimum width=\smbwd,  fill=red!20, minimum height=0.5cm] {Neural tensors}; 
+%   %------------
+  
+  \node (diffusion) at (0,-2.5) [draw, process, minimum width=\smbwd, fill=blue!20, minimum height=0.7cm] {Step 1: Diffusion map};
   %------------
   
-  \node (diffusion) at (0,-3.5) [draw, process, minimum width=\smbwd, fill=blue!20, minimum height=0.7cm] {Diffusion map};
-  %------------
+  \node (manifolds) at (0,-4.5) [draw, terminal, minimum width=\smbwd,  fill=green!20, minimum height=0.5cm] {Neural manifold};
   
-  \node (manifolds) at (0,-5) [draw, terminal, minimum width=\smbwd,  fill=green!20, minimum height=0.5cm] {Neural manifolds};
-  
-   \node (persistent) at (0,-6.5) [draw, process, minimum width=\smbwd, fill=blue!20, minimum height=0.7cm] {Persistent homology};
+   \node (persistent) at (0,-6.5) [draw, process, minimum width=\smbwd, fill=blue!20, minimum height=0.7cm] {Step 2: Persistent homology};
    
-   \node (features) at (0,-8) [draw, terminal, minimum width=\smbwd,  fill=green!20, minimum height=0.5cm] {Persistence diagrams and barcodes};
+   \node (features) at (0,-8.5) [draw, terminal, minimum width=\smbwd,  fill=green!20, minimum height=0.5cm] {Topological features (persistence diagrams)};
    
-   \node (wasserstein) at (0,-9.5) [draw, terminal, minimum width=\smbwd,  fill=green!20, minimum height=0.5cm] {Pairwise Wasserstein distance};
+   \node (wasserstein) at (0,-10.5) [draw, terminal, minimum width=\smbwd,  fill=green!20, minimum height=0.5cm] {$p$-Wasserstein distance between persistence diagrams};
   
   %------------
   
 %  \path [line](BNN) -- (experimental);
 %  \path [line](ANN) -- (artificial);
- \path [line](tensors) -- (diffusion);
- \path [line](experimental) -- (tensors) ;
+ \path [line](experimental) -- (diffusion) ;
 %  \path [line] (artificial) -- (tensors) ;
  \path [line](diffusion) -- (manifolds);
   \path [line](manifolds) -- (persistent);
@@ -112,27 +111,29 @@ Our implementation used the package ripser (\cite{ctralie2018ripser}) to obtain 
 \centering
 \begin{subfigure}[b]{0.2\textwidth}
     \includegraphics[width=\textwidth]{figures/X1_embedding.png}
-    \caption{Three-dimensional embedding of the original point cloud $X_1$.}
+    \caption{Three-dimensional embedding of point cloud $X_1$.}
 \end{subfigure}
 \hfill
 \begin{subfigure}[b]{0.75\textwidth}
     \includegraphics[width=\textwidth]{figures/X1_H0.png}
-    \caption{Persistence diagrams.}
+    \caption*{Persistence diagrams.}
 \end{subfigure}
 \begin{subfigure}[b]{0.25\textwidth}
 \includegraphics[width=\textwidth]{figures/white.png} 
 \end{subfigure}
 \begin{subfigure}[b]{0.24\textwidth}
     \includegraphics[width=\textwidth]{figures/X1_H0_barcode.png}
+    \captionsetup{labelformat=empty}
     \caption{}
 \end{subfigure}
 \begin{subfigure}[b]{0.24\textwidth}
     \includegraphics[width=\textwidth]{figures/X1_H1_barcode.png}
-        \caption{Persistence barcodes.}
+        \caption*{Persistence barcodes.}
 \end{subfigure}
 \begin{subfigure}[b]{0.24\textwidth}
 \includegraphics[width=\textwidth]{figures/X1_H2_barcode.png}
- \caption{}
+\captionsetup{labelformat=empty}
+    \caption{}
 \end{subfigure}
 \caption{Results for applying persistent homology on the three-dimensional embedding of $X_1$.}
 \end{figure}
@@ -297,15 +298,15 @@ We first computed the first pairwise distances between the persistence diagrams 
  \hline
 $X_1$ &
 0.0&
-2.77&
-3.05&
-3.95&
-3.08&
-3.42
+\textbf{2.77}&
+\textbf{3.05}&
+\textbf{3.95}&
+\textbf{3.08}&
+\textbf{3.42}
 \\
 \hline
 $X_2$ &
-2.77&
+\textbf{2.77}&
 0.0&
 0.43&
 1.35&
@@ -314,7 +315,7 @@ $X_2$ &
 \\
 \hline
 $X_3$ &
-3.05&
+\textbf{3.05}&
 0.43&
 0.0&
 1.03&
@@ -323,7 +324,7 @@ $X_3$ &
 \\
 \hline
 $X_4$ &
-3.95&
+\textbf{3.95}&
 1.35&
 1.03&
 0.0&
@@ -332,7 +333,7 @@ $X_4$ &
 \\
 \hline
 $X_5$ &
-3.08&
+\textbf{3.08}&
 1.0&
 0.94&
 1.11&
@@ -341,7 +342,7 @@ $X_5$ &
 \\
 \hline
 $X_6$ &
-3.42&
+\textbf{3.42}&
 0.84&
 0.66&
 0.72&
